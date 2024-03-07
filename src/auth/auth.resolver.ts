@@ -1,12 +1,17 @@
-import { Args, Mutation, Resolver } from '@nestjs/graphql';
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { LoginRequestDto } from './dto/login-request.input';
-import { LoginResponseDto } from './dto/login-response.dto';
+import { LoginResponseDto } from './type/login-response.type';
 import { AuthService } from './auth.service';
 
 @Resolver()
 export class AuthResolver {
 
     constructor(private authService: AuthService){}
+
+    @Query(()=>String)
+    async hello(){
+        return "hello"
+    }
 
 
     @Mutation(()=>String)

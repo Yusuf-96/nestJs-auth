@@ -1,10 +1,11 @@
 import { Field, ObjectType } from "@nestjs/graphql";
 
 @ObjectType()
-export class LoginResponseDto{
+export class User {
     @Field()
-    message: string;
+    userId:string
 
     @Field()
-    token: string;
+    username:string
+
 }
