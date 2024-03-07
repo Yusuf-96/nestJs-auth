@@ -9,8 +9,14 @@ input LoginRequestDto {
 
 type Mutation {
   login(loginRequestDto: LoginRequestDto!): String!
+  register(registerUserDto: RegisteUserDto!): String!
 }
 
 type Query {
   hello: String!
+}
+
+input RegisteUserDto {
+  password: String!
+  username: String!
 }
