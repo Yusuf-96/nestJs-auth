@@ -22,7 +22,7 @@ import { ConfigModule } from '@nestjs/config';
 
       autoLoadEntities: true,
       synchronize: !!process.env.DATABASE_SYNC,
-      logging: true,
+      // logging: true,
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
