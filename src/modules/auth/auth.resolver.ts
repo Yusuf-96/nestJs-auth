@@ -2,8 +2,10 @@ import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { LoginRequestDto } from './dto/login-request.input';
 import { LoginResponseDto } from './type/login-response.type';
 import { AuthService } from './auth.service';
-import { UsersService } from 'src/users/users.service';
-import { RegisteUserDto } from 'src/users/dto/register-user.dto';
+import { UsersService } from 'src/modules/users/users.service';
+import { RegisteUserDto } from 'src/modules/users/dto/register-user.dto';
+import { UseGuards } from '@nestjs/common';
+import { GqlAuthGuards } from './guards/gql-auth.guard';
 
 @Resolver()
 export class AuthResolver {
@@ -25,13 +27,11 @@ export class AuthResolver {
     return 'registered successfuly';
   }
 
-  @Mutation(() => String)
+  @Mutation(() => LoginResponseDto)
+  @UseGuards(GqlAuthGuards)
   async login(
     @Args('loginRequestDto') loginRequestDto: LoginRequestDto,
   ): Promise<LoginResponseDto> {
-    return this.authService.validateUser(
-      loginRequestDto.username,
-      loginRequestDto.password,
-    );
+    return this.authService.login(loginRequestDto);
   }
 }

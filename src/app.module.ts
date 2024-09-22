@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
-import { AuthModule } from './auth/auth.module';
-import { UsersModule } from './users/users.module';
+import { AuthModule } from './modules/auth/auth.module';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
@@ -30,7 +29,6 @@ import { ConfigModule } from '@nestjs/config';
       sortSchema: true,
     }),
     AuthModule,
-    UsersModule,
   ],
   controllers: [],
   providers: [],

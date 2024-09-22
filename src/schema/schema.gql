@@ -7,8 +7,12 @@ input LoginRequestDto {
   username: String!
 }
 
+type LoginResponseDto {
+  accessToken: String!
+}
+
 type Mutation {
-  login(loginRequestDto: LoginRequestDto!): String!
+  login(loginRequestDto: LoginRequestDto!): LoginResponseDto!
   register(registerUserDto: RegisteUserDto!): String!
 }
 
